@@ -1,9 +1,6 @@
-package com.example.myapplication.model;
+package com.example.myapplication.server.model;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
-
-import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.List;

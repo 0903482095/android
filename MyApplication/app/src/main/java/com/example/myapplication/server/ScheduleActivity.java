@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.server;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -7,13 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,10 +23,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.myapplication.model.ScheduleDTO;
-import com.example.myapplication.model.UserDTO;
+import com.example.myapplication.R;
+import com.example.myapplication.server.model.ScheduleDTO;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,7 +55,7 @@ public class ScheduleActivity extends AppCompatActivity {
         id=sharedPreferences.getInt("id",0);
         if(id>0){
             RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
-            String url = "http://192.168.6.104:8080/getSchedule/"+id;
+            String url = "http://192.168.6.103:8080/getSchedule/"+id;
 
             JsonArrayRequest jsonArrayRequest=null;
 
@@ -150,7 +147,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             RequestQueue queue = Volley.newRequestQueue(ScheduleActivity.this);
-                            String url = "http://192.168.6.104:8080/delete/"+select.getId();
+                            String url = "http://192.168.6.103:8080/delete/"+select.getId();
 
                             JsonObjectRequest objectRequest = null;
                             objectRequest = new JsonObjectRequest(Request.Method.DELETE, url,null,

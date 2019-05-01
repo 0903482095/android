@@ -1,11 +1,10 @@
-package com.example.myapplication;
+package com.example.myapplication.server;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.myapplication.model.UserDTO;
+import com.example.myapplication.R;
+import com.example.myapplication.server.model.UserDTO;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     TextView textView;
     EditText username,password;
     Button btn;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         anhXa();
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
         });
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void CallRest() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.6.104:8080/login";
+        String url = "http://192.168.6.103:8080/login";
 
         JsonObjectRequest objectRequest = null;
         UserDTO user=new UserDTO(username.getText().toString().trim(),password.getText().toString().trim());
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             UserDTO userDTO = (UserDTO) new Gson().fromJson(response.toString(), UserDTO.class);
-                            Intent intent=new Intent(MainActivity.this,ScheduleActivity.class);
+                            Intent intent=new Intent(LoginActivity.this,ScheduleActivity.class);
 
 //                            Bundle bundle=new Bundle();
 //                            bundle.putString("user",response.toString());
@@ -81,12 +81,12 @@ public class MainActivity extends AppCompatActivity {
                             editor.apply();
 
                             startActivity(intent);
-                            Toast.makeText(MainActivity.this,"Đăng nhập thành công",LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,"Đăng nhập thành công",LENGTH_SHORT).show();
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MainActivity.this,"Đăng nhập thất bại",LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,"Đăng nhập thất bại",LENGTH_SHORT).show();
                 }
             }
             );

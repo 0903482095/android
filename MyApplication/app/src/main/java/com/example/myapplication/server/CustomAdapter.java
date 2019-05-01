@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.server;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.myapplication.model.ScheduleDTO;
+import com.example.myapplication.R;
+import com.example.myapplication.server.model.ScheduleDTO;
 
 import java.util.List;
 

@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailSchedule"></activity>
-        <activity android:name=".AddSchedule" />
-        <activity android:name=".EditSchedule" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ScheduleActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".server.DetailSchedule"></activity>
+        <activity android:name=".server.AddSchedule" />
+        <activity android:name=".server.EditSchedule" />
+        <activity android:name=".server.RegisterActivity" />
+        <activity android:name=".server.ScheduleActivity" />
+        <activity android:name=".server.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.example.myapplication.model;
+package com.example.myapplication.server.model;
 
 public class ScheduleDTO {
     int id;
